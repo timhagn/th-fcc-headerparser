@@ -2,7 +2,7 @@
 // where your node app starts
 
 // init project
-var express = require('express');
+const express = require('express');
 var app = express();
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
@@ -19,14 +19,22 @@ app.get("/", function (req, res) {
 });
 
 
-// your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+// Header Parser Microservice Endpoints
+// Returns ip, language & software info.
+app.get("/api/whoami", (req, res) => {
+  const reqIP = req.ip,
+        reqLanguage = req.headers['accept-language'],
+        info = req.headers['user-agent'],
+        parsedHeader = {
+          'ipaddress': reqIP,
+          'language': reqLanguage,
+          'software': info
+        };
+  res.json(parsedHeader);
 });
 
 
-
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
