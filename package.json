@@ -2,7 +2,7 @@
 	"name": "request_header",
 	"version": "0.0.1",
 	"description": "API project for freeCodeCamp",
-	"author": "Tim Hagn - Original from freeCodeCamp",
+	"author": "Tim Hagn - Original from @JosephLivengood / freeCodeCamp",
 	"main": "server.js",
 	"scripts": {
 		"start": "node server.js"
